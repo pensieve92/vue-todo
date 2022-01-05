@@ -1,30 +1,31 @@
 <template>
   <div id="app" class="container">
     <h1 class="text-center">Todo App</h1>
-    <input
-        v-model="todoText"
-        type="text"
-        class="w-100 p-2"
-        placeholder="Type todo"
-        @keyup.enter="addTodo"
+    <AddTodo
+        :add-todo="addTodo"
+        :todo-text="todoText"
     />
     <hr/>
-    <Todo
-        v-for="todo in todos"
-        :key="todo.id"
-        :todo="todo"
+<!--    <TodoList-->
+<!--        :delete-todo="deleteTodo"-->
+<!--        :todos="todos"-->
+<!--        :toggle-checkbox="toggleCheckbox"-->
+<!--    />-->
+    <TodoList
+        :delete-todo="deleteTodo"
+        :todos="todos"
         @toggle-checkbox="toggleCheckbox"
-        @click-delete="deleteTodo"
     />
     {{todos}}
   </div>
 </template>
 
 <script>
-import Todo from "./components/Todo";
+import TodoList from "@/components/TodoList";
+import AddTodo from "@/components/AddTodo";
 
 export default {
-  components: {Todo},
+  components: {AddTodo, TodoList},
   data() {
     return {
       todoText: '',
@@ -44,9 +45,9 @@ export default {
       this.todoText = '';
     },
     toggleCheckbox({id, checked}){
+      console.log('toggleCheckbox', id, checked);
       const index = this.todos.findIndex(todo => todo.id === id);
       this.todos[index].checked = checked;
-      console.log(id, checked)
     },
     deleteTodo(id) {
       // const index = this.todos.findIndex(todo => todo.id === id);

@@ -1,6 +1,7 @@
 <template>
   <div class="mb-2 d-flex">
     <div>
+      {{todo.checked}}
       <input
           type="checkbox"
           :checked="todo.checked"
@@ -33,6 +34,7 @@ export default {
   },
   methods:{
     toggleCheckbox(e){
+      console.log("Todo", e.target.checked)
       this.$emit('toggle-checkbox',{
         id: this.todo.id,
         checked: e.target.checked
