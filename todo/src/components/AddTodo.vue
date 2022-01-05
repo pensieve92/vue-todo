@@ -16,8 +16,12 @@ export default {
     }
   },
   props: {
-    addTodo: {},
-    // todoText: {}
+  },
+  methods: {
+    addTodo(e){
+      this.$emit('add-todo', e.target.value);
+    }
   }
+
 }
 </script>

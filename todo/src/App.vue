@@ -1,20 +1,17 @@
 <template>
   <div id="app" class="container">
     <h1 class="text-center">Todo App</h1>
+    <CompletedTodo
+        :todos="todos"
+    />
     <AddTodo
-        :add-todo="addTodo"
-        :todo-text="todoText"
+        @add-todo="addTodo"
     />
     <hr/>
-<!--    <TodoList-->
-<!--        :delete-todo="deleteTodo"-->
-<!--        :todos="todos"-->
-<!--        :toggle-checkbox="toggleCheckbox"-->
-<!--    />-->
     <TodoList
-        :delete-todo="deleteTodo"
         :todos="todos"
         @toggle-checkbox="toggleCheckbox"
+        @delete-todo="deleteTodo"
     />
     {{todos}}
   </div>
@@ -23,9 +20,10 @@
 <script>
 import TodoList from "@/components/TodoList";
 import AddTodo from "@/components/AddTodo";
+import CompletedTodo from "@/components/CompletedTodo";
 
 export default {
-  components: {AddTodo, TodoList},
+  components: {AddTodo, TodoList, CompletedTodo},
   data() {
     return {
       todoText: '',
@@ -36,16 +34,15 @@ export default {
     }
   },
   methods:{
-    addTodo(e){
+    addTodo(value){
       this.todos.push({
             id: Math.random(),
-            text: e.target.value,
+            text: value,
             checked: false
           })
       this.todoText = '';
     },
     toggleCheckbox({id, checked}){
-      console.log('toggleCheckbox', id, checked);
       const index = this.todos.findIndex(todo => todo.id === id);
       this.todos[index].checked = checked;
     },

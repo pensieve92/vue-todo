@@ -16,14 +16,17 @@ export default {
   name: 'TodoList',
   components: {Todo},
   props: {
-    deleteTodo: {},
-    todos: {},
-    // toggleCheckbox: {}
+    todos: {
+      type: Array,
+      required: true
+    },
   },
   methods:{
-    toggleCheckbox(obj){
-      console.log("TodoList", obj);
-      this.$emit('toggle-checkbox', obj)
+    toggleCheckbox(value){
+      this.$emit('toggle-checkbox', value);
+    },
+    deleteTodo(todoId){
+      this.$emit('delete-todo', todoId);
     }
   }
 }
