@@ -2,14 +2,12 @@
   <div id="app" class="container">
     <h1 class="text-center">Todo App</h1>
     <CompletedTodo
-        :todos="todos"
     />
     <AddTodo
         @add-todo="addTodo"
     />
     <hr/>
     <TodoList
-        :todos="todos"
         @toggle-checkbox="toggleCheckbox"
         @delete-todo="deleteTodo"
     />
@@ -27,10 +25,7 @@ export default {
   data() {
     return {
       todoText: '',
-      todos: [
-        { id: 1, text: 'buy a car', checked: false},
-        { id: 2, text: 'take a rest', checked: false}
-      ]
+
     }
   },
   methods:{

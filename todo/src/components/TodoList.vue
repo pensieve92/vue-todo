@@ -16,10 +16,6 @@ export default {
   name: 'TodoList',
   components: {Todo},
   props: {
-    todos: {
-      type: Array,
-      required: true
-    },
   },
   methods:{
     toggleCheckbox(value){
@@ -28,6 +24,11 @@ export default {
     deleteTodo(todoId){
       this.$emit('delete-todo', todoId);
     }
+  },
+  computed: {
+    todos() {
+      return this.$store.state.todos;
+    },
   }
 }
 </script>
