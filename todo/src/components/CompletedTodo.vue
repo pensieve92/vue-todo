@@ -13,11 +13,11 @@ export default {
   },
   computed: {
     todos() {
-      return this.$store.state.todos;
+      return this.$store.state.todo.todos;
     },
     numberOfCompletedTodo(){
       // return this.todos.filter(todo => todo.checked === true).length;
-      return this.$store.getters.numberOfCompletedTodo;
+      return this.$store.getters['todo/umberOfCompletedTodo'];
     }
   }
 }

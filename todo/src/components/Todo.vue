@@ -35,14 +35,14 @@ export default {
   },
   computed: {
     numberOfCompletedTodo(){
-      return this.$store.getters.numberOfCompletedTodo
+      return this.$store.getters['todo/numberOfCompletedTodo']
     }
   },
 
   methods:{
     toggleCheckbox(e){
 
-      this.$store.dispatch("toggleCheckbox",{
+      this.$store.dispatch("todo/toggleCheckbox",{
         id: this.todo.id,
         checked: e.target.checked
       })
@@ -54,7 +54,7 @@ export default {
 
     },
     clickDelete(){
-      this.$store.dispatch("clickDelete", this.todo.id);
+      this.$store.dispatch("todo/clickDelete", this.todo.id);
       // this.$store.commit("DELETE_TODO", this.todo.id);
     }
   }

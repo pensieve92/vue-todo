@@ -17,14 +17,14 @@ export default {
     this.getUsers();
   },
   computed: {
-    ...mapState({users : 'users'})
+    ...mapState({users : state => state.user.users})
     // users(){
     //   return this.$store.state.users
     // },
 
   },
   methods: {
-    ...mapActions(['getUsers'])
+    ...mapActions('user', ['getUsers'])
     // getUsers(){
     //   this.$store.dispatch('getUsers')
     // }
