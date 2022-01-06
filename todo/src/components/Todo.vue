@@ -34,14 +34,21 @@ export default {
   },
   methods:{
     toggleCheckbox(e){
-      this.$store.commit("TOGGLE_TODO",{
+
+      this.$store.dispatch("toggleCheckbox",{
         id: this.todo.id,
         checked: e.target.checked
       })
 
+      // this.$store.commit("TOGGLE_TODO",{
+      //   id: this.todo.id,
+      //   checked: e.target.checked
+      // })
+
     },
     clickDelete(){
-      this.$store.commit("DELETE_TODO", this.todo.id);
+      this.$store.dispatch("clickDelete", this.todo.id);
+      // this.$store.commit("DELETE_TODO", this.todo.id);
     }
   }
 }

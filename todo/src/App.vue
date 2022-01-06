@@ -6,6 +6,7 @@
     <AddTodo/>
     <hr/>
     <TodoList/>
+    <UserList/>
   </div>
 </template>
 
@@ -13,9 +14,10 @@
 import TodoList from "@/components/TodoList";
 import AddTodo from "@/components/AddTodo";
 import CompletedTodo from "@/components/CompletedTodo";
+import UserList from "@/components/UserList";
 
 export default {
-  components: {AddTodo, TodoList, CompletedTodo},
+  components: {AddTodo, TodoList, CompletedTodo, UserList},
   data() {
     return {
     }
