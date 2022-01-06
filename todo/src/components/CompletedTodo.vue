@@ -16,7 +16,8 @@ export default {
       return this.$store.state.todos;
     },
     numberOfCompletedTodo(){
-      return this.todos.filter(todo => todo.checked === true).length;
+      // return this.todos.filter(todo => todo.checked === true).length;
+      return this.$store.getters.numberOfCompletedTodo;
     }
   }
 }

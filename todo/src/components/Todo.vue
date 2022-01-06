@@ -15,6 +15,7 @@
     >
       {{ todo.text }}
     </span>
+    {{numberOfCompletedTodo}}
     <button
         class="btn btn-danger btn-sm"
         @click="clickDelete"
@@ -32,6 +33,12 @@ export default {
       require: true
     }
   },
+  computed: {
+    numberOfCompletedTodo(){
+      return this.$store.getters.numberOfCompletedTodo
+    }
+  },
+
   methods:{
     toggleCheckbox(e){
 

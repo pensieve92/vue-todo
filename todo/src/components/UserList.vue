@@ -9,7 +9,7 @@
 </template>
 
 <script>
-
+import {mapState, mapActions} from 'vuex';
 
 export default {
   name: "UserList.vue",
@@ -17,14 +17,17 @@ export default {
     this.getUsers();
   },
   computed: {
-    users(){
-      return this.$store.state.users
-    }
+    ...mapState({users : 'users'})
+    // users(){
+    //   return this.$store.state.users
+    // },
+
   },
   methods: {
-    getUsers(){
-      this.$store.dispatch('getUsers')
-    }
+    ...mapActions(['getUsers'])
+    // getUsers(){
+    //   this.$store.dispatch('getUsers')
+    // }
   }
 
 }
