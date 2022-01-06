@@ -5,7 +5,7 @@
       <input
           type="checkbox"
           :checked="todo.checked"
-          @change="toggleCheckbox"
+          @click="toggleCheckbox"
       />
     </div>
     <span
@@ -34,14 +34,14 @@ export default {
   },
   methods:{
     toggleCheckbox(e){
-      console.log("Todo", e.target.checked)
-      this.$emit('toggle-checkbox',{
+      this.$store.commit("TOGGLE_TODO",{
         id: this.todo.id,
         checked: e.target.checked
       })
+
     },
     clickDelete(){
-      this.$emit('click-delete', this.todo.id)
+      this.$store.commit("DELETE_TODO", this.todo.id);
     }
   }
 }
