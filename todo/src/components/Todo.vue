@@ -22,11 +22,27 @@
     >
       Delte
     </button>
+<!--    <Like :cnt="1" />-->
+    <component v-bind:is="LikeCom" :cnt="1">
+      <template v-slot:header>
+        header
+      </template>
+      <template v-slot:footer>
+        footer
+      </template>
+    </component>
   </div>
 </template>
 <script>
+import Like from "./Like";
 export default {
   name: 'Todo',
+  components: {Like},
+  data() {
+    return {
+      LikeCom: 'Like'
+    }
+  },
   props:{
     todo: {
       type: Object,
